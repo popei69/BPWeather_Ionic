@@ -3,9 +3,25 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+var weatherApp = angular.module('weatherApp', ['ionic', 'ngRoute']);
 
-.run(function($ionicPlatform) {
+weatherApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/centres', {
+        templateUrl: 'views/center-list.html',
+        controller: 'CenterListCtrl'
+      }).
+      when('/centres/:centerId', {
+        templateUrl: 'views/center-detail.html',
+        controller: 'CenterDetailCtrl'
+      }).
+      otherwise({
+        redirectTo: '/centres'
+      });
+  }]);
+
+weatherApp.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

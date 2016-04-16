@@ -1,0 +1,43 @@
+<div class="container">
+	<!-- <div class="jumbotron"> -->
+
+	<div class="list card">
+  	<div class="item item-body">
+
+		<!-- <div class="row"> -->
+			<!-- <div class="col-xs-3 col-lg-4"> -->
+        <img class="img-polaroid" src="http://weather.benoitpasquier.fr/bootstrap/img/logo-rond.png" width="160" />
+      <!-- </div> -->
+    	<!-- <div class="col-xs-9 col-lg-8"> -->
+	        <h2>Bienvenue</h2>
+	        <p>
+	        	Weather est un service destiné aux pratiquants de la chute libre. Retrouvez facilement le dernier relevé météo de votre centre de saut
+				afin de toujours pratiquer dans les meilleures conditions.
+	        </p>
+			<!-- </div> -->
+		<!-- </div> -->
+		 <div class="form-search">
+					<input id="search" type="text" class="input-large search-query" placeholder="Centre ou n° de département" value="" ng-model="query" />
+     </div>
+	 </div>
+	 </div>
+		<table class="table table-striped" >
+			<thead>
+				<tr>
+					<th>Centre</th>
+					<th>Code postal</th>
+					<th>Météo</th>
+				</tr>
+			</thead>
+
+			<tbody id="center-table">
+
+				<tr ng-repeat="center in centers | filter:search">
+					<td>{{center.centername}}</td>
+					<td>{{center.zipcode}}</td>
+					<td><a class="btn btn-info" href="#/centres/{{center.id}}">Voir la météo</a></td>
+				</tr>
+			</tbody>
+
+		</table>
+</div>
